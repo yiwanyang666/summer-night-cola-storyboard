@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>夏夜可乐与单车 - Storyboard</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --bg-soft: #f2f3f5;
+      --panel: #ffffff;
+      --panel-strong: #f6f6f8;
+      --ink: #1d1d1f;
+      --muted: #5f6368;
+      --faint: #8a8f98;
+      --line: rgba(29, 29, 31, 0.09);
+      --line-strong: rgba(29, 29, 31, 0.16);
+      --accent: #0071e3;
+      --accent-soft: #eef6ff;
+      --accent-gradient: linear-gradient(100deg, #0066cc 0%, #00a3ff 100%);
+      --shadow: 0 12px 34px rgba(0, 0, 0, 0.06);
+      --radius: 8px;
+      --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Noto Sans SC", Arial, sans-serif;
+      --font-body: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Noto Sans SC", Arial, sans-serif;
+      --font-mono: "SFMono-Regular", "JetBrains Mono", "IBM Plex Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    .page {
+      width: min(1500px, calc(100vw - 40px));
+      margin: 30px auto 72px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .panel {
+      min-width: 0;
+      background: var(--panel);
+      border: 1px solid rgba(29, 29, 31, 0.06);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    section {
+      padding: 26px;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 650;
+      letter-spacing: 0;
+      line-height: 1.16;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 650;
+      letter-spacing: 0;
+      line-height: 1.3;
+      margin-bottom: 18px;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .header-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+      align-items: stretch;
+    }
+
+    .card {
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 0;
+      background: var(--panel-strong);
+    }
+
+    .summary-card {
+      min-height: 100%;
+      display: grid;
+      align-content: center;
+      gap: 8px;
+    }
+
+    .body-text,
+    .meta-value {
+      color: var(--muted);
+      line-height: 1.68;
+      font-size: 14px;
+    }
+
+    .body-text ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .body-text li + li {
+      margin-top: 5px;
+    }
+
+    .credit {
+      margin-top: 10px;
+      color: var(--faint);
+      font-size: 13px;
+      font-family: var(--font-body);
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+
+    .delivery-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .delivery-card {
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 0;
+      background: var(--panel-strong);
+    }
+
+    .readiness-table {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--panel-strong);
+    }
+
+    .readiness-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.7fr 0.8fr 1fr 1.5fr;
+      gap: 10px;
+      padding: 11px 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .readiness-row-no-duration {
+      grid-template-columns: 1.1fr 0.8fr 1fr 1.5fr;
+    }
+
+    .readiness-row:first-child {
+      border-top: 0;
+    }
+
+    .readiness-head {
+      color: var(--faint);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: var(--accent-soft);
+      font-size: 10px;
+    }
+
+    .readiness-shot {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .storyboard-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .overview-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .overview-subhead {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      padding-bottom: 10px;
+      border-bottom: 0;
+    }
+
+    .overview-subtitle {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 650;
+      color: var(--ink);
+    }
+
+    .overview-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .overview-card {
+      display: grid;
+      gap: 12px;
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 0;
+      background: var(--panel-strong);
+      box-shadow: none;
+      content-visibility: auto;
+      contain-intrinsic-block-size: 420px;
+    }
+
+    .overview-shot {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .overview-id {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 650;
+      letter-spacing: 0;
+      color: var(--ink);
+    }
+
+    .overview-duration {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .overview-duration::before {
+      content: "/";
+      margin-right: 10px;
+      color: var(--faint);
+    }
+
+    .overview-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .overview-frame {
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius);
+      border: 0;
+      background: var(--bg-soft);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--muted);
+      text-align: center;
+      padding: 10px;
+    }
+
+    .overview-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    .aggregate-prompt-card {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .aggregate-prompt-card.has-sheet {
+      grid-template-columns: minmax(320px, 4fr) minmax(0, 5fr);
+      align-items: stretch;
+    }
+
+    .aggregate-sheet-area {
+      display: grid;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .aggregate-sheet-frame {
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius);
+      border: 0;
+      background: var(--panel-strong);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .aggregate-sheet-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .aggregate-prompt-area {
+      display: grid;
+      min-width: 0;
+    }
+
+    .aggregate-prompt-copy {
+      min-height: 260px;
+      border: 0;
+      background: var(--panel-strong);
+    }
+
+    .aggregate-prompt-card.has-sheet .aggregate-prompt-copy {
+      height: 100%;
+      min-height: 420px;
+    }
+
+    .method-guide-title {
+      max-width: 760px;
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 650;
+      line-height: 1.28;
+      color: var(--ink);
+    }
+
+    .method-guide-definition {
+      max-width: 920px;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      background: var(--panel-strong);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .method-list {
+      --method-columns: 56px minmax(220px, 0.65fr) minmax(0, 1.35fr) minmax(260px, 1fr);
+      margin-top: 22px;
+      border-top: 3px solid var(--accent);
+    }
+
+    .method-head {
+      display: grid;
+      grid-template-columns: var(--method-columns);
+      gap: 18px;
+      padding: 12px 0 10px;
+      border-bottom: 1px solid var(--line);
+      color: var(--faint);
+      font-size: 11px;
+      font-weight: 650;
+      line-height: 1.4;
+    }
+
+    .method-row {
+      display: grid;
+      grid-template-columns: var(--method-columns);
+      gap: 18px;
+      align-items: start;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .method-head > :last-child,
+    .method-row > .method-inputs {
+      padding-left: 70px;
+    }
+
+    .method-index {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--accent);
+    }
+
+    .method-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 650;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    .method-description {
+      max-width: 820px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .method-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .method-input {
+      padding: 5px 8px;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .method-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: baseline;
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .method-footer strong {
+      color: var(--ink);
+    }
+
+    .method-footer-rule {
+      flex: 0 0 auto;
+      color: var(--faint);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+    }
+
+    .storyboard-sheet-card {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 0;
+      background: var(--panel-strong);
+    }
+
+    .storyboard-sheet-frame {
+      border-radius: var(--radius);
+      border: 0;
+      background: var(--bg-soft);
+      overflow: hidden;
+    }
+
+    .storyboard-sheet-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .shot-board {
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 0;
+      background: var(--panel);
+      display: grid;
+      gap: 12px;
+      overflow: visible;
+      content-visibility: auto;
+      contain-intrinsic-block-size: 760px;
+    }
+
+    .shot-board + .shot-board {
+      border-top: 1px solid var(--line);
+      border-radius: 0;
+      padding-top: 26px;
+    }
+
+    .shot-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 0 2px 2px;
+      border-bottom: 0;
+      background: var(--panel);
+    }
+
+    .shot-title {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .shot-id {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 650;
+      letter-spacing: 0;
+      color: var(--ink);
+    }
+
+    .shot-duration {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: var(--muted);
+    }
+
+    .duration-note {
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--faint);
+      margin-left: 6px;
+    }
+
+    .shot-duration::before {
+      content: "/";
+      margin-right: 12px;
+      color: var(--faint);
+    }
+
+    .shot-layout {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: minmax(0, 1.05fr) minmax(390px, 0.95fr);
+      align-items: stretch;
+    }
+
+    .asset-grid {
+      display: grid;
+      gap: 0;
+      grid-template-columns: 1fr;
+      grid-auto-rows: minmax(0, 1fr);
+      background: var(--panel);
+      border-right: 0;
+      align-self: stretch;
+    }
+
+    .reference-layout {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .reference-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .text-review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .review-card {
+      display: grid;
+      gap: 10px;
+    }
+
+    .review-status {
+      display: inline-flex;
+      width: fit-content;
+      padding: 4px 8px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--accent-soft);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .asset-card {
+      display: grid;
+      gap: 12px;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      min-height: 0;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: var(--panel-strong);
+    }
+
+    .asset-label {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .asset-frame {
+      border-radius: var(--radius);
+      border: 0;
+      background: var(--panel);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--muted);
+      text-align: center;
+      padding: 0;
+      min-height: 220px;
+      height: 100%;
+    }
+
+    .asset-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    .asset-link {
+      display: none;
+      font-size: 12px;
+      color: var(--accent);
+      word-break: break-all;
+      text-decoration: none;
+      opacity: 0.74;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 10px;
+      grid-template-rows: auto auto auto minmax(0, 1fr);
+      align-self: stretch;
+    }
+
+    .info-card {
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      border: 0;
+      background: var(--panel-strong);
+    }
+
+    .info-card:has(.video-prompt) {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      min-height: 0;
+    }
+
+    .info-label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 7px;
+    }
+
+    .info-value {
+      color: var(--ink);
+      line-height: 1.78;
+      font-size: 14px;
+    }
+
+    .video-prompt {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr);
+      gap: 10px;
+      font-size: 13px;
+      min-height: 0;
+      height: 100%;
+    }
+
+    .prompt-block {
+      padding: 0;
+      border-radius: var(--radius);
+      background: transparent;
+      border: 0;
+      min-height: 0;
+      height: 100%;
+    }
+
+    .prompt-copy {
+      display: block;
+      width: 100%;
+      min-height: 118px;
+      height: 100%;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      color: var(--ink);
+      padding: 12px 13px;
+      font: 13px/1.65 var(--font-body);
+      white-space: pre-wrap;
+    }
+
+    .empty {
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 1px dashed var(--line-strong);
+      color: var(--muted);
+      background: var(--bg-soft);
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: var(--accent-soft);
+      padding: 2px 6px;
+      border-radius: var(--radius);
+    }
+
+    @media (max-width: 1100px) {
+      .header-grid,
+      .shot-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .asset-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        border-right: 0;
+      }
+
+      .delivery-grid,
+      .reference-layout,
+      .text-review-grid,
+      .overview-grid,
+      .aggregate-prompt-card.has-sheet,
+      .readiness-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .method-row {
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 12px 14px;
+        padding: 18px 0;
+      }
+
+      .method-head {
+        display: none;
+      }
+
+      .method-index {
+        font-size: 21px;
+      }
+
+      .method-name,
+      .method-description,
+      .method-inputs {
+        grid-column: 2;
+      }
+
+      .method-inputs::before {
+        width: 100%;
+        margin-bottom: 2px;
+        color: var(--faint);
+        content: "建议输入";
+        font-size: 11px;
+        font-weight: 650;
+        line-height: 1.4;
+      }
+
+      .method-row > .method-inputs {
+        padding-left: 0;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .page {
+        width: min(calc(100vw - 24px), 1480px);
+        margin: 12px auto 40px;
+      }
+
+      section {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .credit {
+        font-size: 12px;
+      }
+
+      .method-guide-title {
+        font-size: 24px;
+      }
+
+      .method-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="panel">
+      <div class="header-grid">
+        <div>
+          <div class="eyebrow">Storyboard</div>
+          <h1>夏夜可乐与单车</h1>
+          <div class="credit">Summer Night Cola and Bicycle</div>
+        </div>
+        <div class="card summary-card">
+          <div class="eyebrow">Brief</div>
+          <div class="body-text">依据 15.8 秒竖屏短片 8 镜节奏拆解制作的《夏夜可乐与单车》纯白底黑白轮廓线稿分镜审片板（已移除原片实拍截图，仅含手绘级线稿、分镜合集图与合并视频提示词）。</div>
+          <div class="meta-value">画面比例：9:16</div>
+          <div class="meta-value">最后更新：2026-11-16 18:53</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>故事摘要</h2>
+      <div class="card">
+        <div class="body-text">15.8 秒竖屏短片逐镜拉片：Shot 01/03/07/08 为夜间公园广场独坐与目送的年轻女生（粉衬衫花马甲、一字发卡、抱玻璃瓶可乐）；穿插 Shot 02/04/05/06 父亲骑老式二八黑色自行车载着幼年女孩说去喝可乐的温馨回忆。</div>
+      </div>
+    </section>
+
+
+
+
+
+    <section class="panel">
+      <h2>故事板</h2>
+      <div class="storyboard-list">
+
+            <article class="shot-board">
+              <div class="shot-head">
+                <div class="shot-title">
+                  <span class="shot-id">Shot 01</span>
+                  <span class="shot-duration">2.1s <span class="duration-note">建议时长</span></span>
+                </div>
+              </div>
+              <div class="shot-layout">
+                <div class="asset-grid">
+                  <div class="asset-card">
+                    <div class="asset-label">Line Art</div>
+                    <div class="asset-stack"><div class="asset-frame"><img src="assets/shot01-line.jpg" alt="Shot 01 Line Draft" loading="lazy" decoding="async" /></div><a class="asset-link" href="assets/shot01-line.jpg">assets/shot01-line.jpg</a></div>
+                  </div>
+
+                </div>
+                <div class="info-grid">
+                  <div class="info-card">
+                    <span class="info-label">画面</span>
+                    <div class="info-value">9:16 竖屏正面中近景：女生居中坐在低矮石阶上，微低头看向手边，双手在腹前紧握玻璃瓶可乐与一台手机；背景为简洁石墙与栏杆透视线。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">镜头</span>
+                    <div class="info-value">平视中近景固定机位，人物头顶留适当呼吸空间，镜头平稳无大幅晃动。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">动作</span>
+                    <div class="info-value">女生垂眸安静坐着，指尖微微收紧握住可乐瓶颈，维持克制停顿状态。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">视频提示词</span>
+                    <div class="info-value video-prompt"><div class="prompt-block"><textarea class="prompt-copy" readonly>Shot 01 | 女主抱可乐静坐开篇: 夜间公园石阶前正面中近景，年轻女生低马尾、左额发卡、粉衬衫配花色针织马甲坐在台阶上，双手握着玻璃瓶可乐与手机。女生垂眸停顿并轻收手指握紧可乐瓶身。Camera: 平视固定机位轻柔微推。Motion cue: 女生呼吸起伏与握瓶指节微动，避免人物突然抬头或新增路人。</textarea></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="shot-board">
+              <div class="shot-head">
+                <div class="shot-title">
+                  <span class="shot-id">Shot 02</span>
+                  <span class="shot-duration">2.1s <span class="duration-note">建议时长</span></span>
+                </div>
+              </div>
+              <div class="shot-layout">
+                <div class="asset-grid">
+                  <div class="asset-card">
+                    <div class="asset-label">Line Art</div>
+                    <div class="asset-stack"><div class="asset-frame"><img src="assets/shot02-line.jpg" alt="Shot 02 Line Draft" loading="lazy" decoding="async" /></div><a class="asset-link" href="assets/shot02-line.jpg">assets/shot02-line.jpg</a></div>
+                  </div>
+
+                </div>
+                <div class="info-grid">
+                  <div class="info-card">
+                    <span class="info-label">画面</span>
+                    <div class="info-value">9:16 竖屏斜侧中全景：画面偏右方骑着老式二八黑色自行车的眼镜男士向右前行，身穿深色外套配格纹围巾，后座载着穿白色外套的小女孩；背景左侧与上方为洋房白栏杆走廊、砖柱与树篱轮廓。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">镜头</span>
+                    <div class="info-value">平视斜侧中全景微跟移，保持父女与全车车轮完整入画。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">动作</span>
+                    <div class="info-value">父亲踩踏单车带着后座小女孩轻快向右驶出，两人面带笑容。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">视频提示词</span>
+                    <div class="info-value video-prompt"><div class="prompt-block"><textarea class="prompt-copy" readonly>Shot 02 | 父女骑行回忆初现: 夜间洋房门廊与树篱前斜侧中全景，戴眼镜微胖男子穿深色外套配围巾骑老式二八黑色自行车向右行驶，幼年女孩贴坐后座双手抓紧父亲后背。单车稳步向右前滑行并伴随车轮转动。Camera: 侧前方平稳横移跟随。Motion cue: 自行车向前行驶与踏板踩动，禁止生成任何屏幕浮字或改变车辆为现代款。</textarea></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="shot-board">
+              <div class="shot-head">
+                <div class="shot-title">
+                  <span class="shot-id">Shot 03</span>
+                  <span class="shot-duration">1.9s <span class="duration-note">建议时长</span></span>
+                </div>
+              </div>
+              <div class="shot-layout">
+                <div class="asset-grid">
+                  <div class="asset-card">
+                    <div class="asset-label">Line Art</div>
+                    <div class="asset-stack"><div class="asset-frame"><img src="assets/shot03-line.jpg" alt="Shot 03 Line Draft" loading="lazy" decoding="async" /></div><a class="asset-link" href="assets/shot03-line.jpg">assets/shot03-line.jpg</a></div>
+                  </div>
+
+                </div>
+                <div class="info-grid">
+                  <div class="info-card">
+                    <span class="info-label">画面</span>
+                    <div class="info-value">9:16 竖屏右前中高位俯拍中远景：广场斜贯一条长路沿石台，女生独自抱着可乐瓶斜坐在画面中上部的路沿边，回头朝右下侧空荡地面张望；左后方有树干、方形树池、远景秋千架与透视地平线。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">镜头</span>
+                    <div class="info-value">同一夜间公园广场（同一空间），相较 Shot 01 由平视中近景退为右侧偏高俯角中远景，允许改变机位高度与环境视野覆盖。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">动作</span>
+                    <div class="info-value">女生抱紧膝上可乐瓶坐在路沿边，头部微转向右下方空地张望随后短暂停留。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">视频提示词</span>
+                    <div class="info-value video-prompt"><div class="prompt-block"><textarea class="prompt-copy" readonly>Shot 03 | 公园广场孤坐远景: 同一夜间公园广场中高俯角中远景，长条白色路沿石台从左下斜向延伸至右中，女生独自抱着玻璃可乐瓶坐在路沿边轻转头部朝前下方张望，背景可见大树、树池与远处秋千架。Camera: 俯角固定慢摇微跟女生视线。Motion cue: 女生微幅转头环顾与衣摆轻动，不要添加阴影贴图或新增路人。</textarea></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="shot-board">
+              <div class="shot-head">
+                <div class="shot-title">
+                  <span class="shot-id">Shot 04</span>
+                  <span class="shot-duration">2.2s <span class="duration-note">建议时长</span></span>
+                </div>
+              </div>
+              <div class="shot-layout">
+                <div class="asset-grid">
+                  <div class="asset-card">
+                    <div class="asset-label">Line Art</div>
+                    <div class="asset-stack"><div class="asset-frame"><img src="assets/shot04-line.jpg" alt="Shot 04 Line Draft" loading="lazy" decoding="async" /></div><a class="asset-link" href="assets/shot04-line.jpg">assets/shot04-line.jpg</a></div>
+                  </div>
+
+                </div>
+                <div class="info-grid">
+                  <div class="info-card">
+                    <span class="info-label">画面</span>
+                    <div class="info-value">9:16 竖屏正侧中景：画面中央偏右，戴眼镜父亲（红白格衬衫卷袖、蓝色牛仔裤、深色鞋）双手扶车把前倾骑着老式黑色二八自行车朝左行驶；后座小女孩（白色毛绒外套）紧紧抱着父亲后腰，双脚自然悬垂在后轮旁；背景为庭院绿植花丛与平房檐口轮廓。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">镜头</span>
+                    <div class="info-value">平视正侧中景跟随横移（向左跟拍），保持全车两轮与双人完整剪影。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">动作</span>
+                    <div class="info-value">父亲沉稳蹬车朝画面左侧匀速骑行，后座小女孩微笑抱紧父亲贴靠后背。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">视频提示词</span>
+                    <div class="info-value video-prompt"><div class="prompt-block"><textarea class="prompt-copy" readonly>Shot 04 | 父女庭院前并骑侧面: 夜间庭院花丛小路前正侧中景，戴眼镜父亲穿格子衬衫和牛仔裤前倾骑老式黑色二八自行车朝左稳速行进，后座穿白色毛绒短外套的小女孩双手紧抱父亲腰背。车轮向前平滑滚动并带动踩踏节奏。Camera: 平视正侧向向左跟拍横移。Motion cue: 单车向左骑行前进与父女自然颠簸律动，禁止改动车型或人物服装。</textarea></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="shot-board">
+              <div class="shot-head">
+                <div class="shot-title">
+                  <span class="shot-id">Shot 05</span>
+                  <span class="shot-duration">0.8s <span class="duration-note">建议时长</span></span>
+                </div>
+              </div>
+              <div class="shot-layout">
+                <div class="asset-grid">
+                  <div class="asset-card">
+                    <div class="asset-label">Line Art</div>
+                    <div class="asset-stack"><div class="asset-frame"><img src="assets/shot05-line.jpg" alt="Shot 05 Line Draft" loading="lazy" decoding="async" /></div><a class="asset-link" href="assets/shot05-line.jpg">assets/shot05-line.jpg</a></div>
+                  </div>
+
+                </div>
+                <div class="info-grid">
+                  <div class="info-card">
+                    <span class="info-label">画面</span>
+                    <div class="info-value">9:16 竖屏车头前方微仰近景：戴眼镜父亲占画面右侧二分之一，格子衬衫与牛仔裤清晰，双手向前伸出轻握左下角自行车车把；他偏头朝右后下方微笑张口说话；左侧为虚化的背景庭院栏杆透视线。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">镜头</span>
+                    <div class="info-value">从 Shot 04 正侧远距推近切换至车把前下方仰角近景（同一骑行片段同向接续）。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">动作</span>
+                    <div class="info-value">父亲稳稳把住单车龙头，微偏脸庞带着宠溺笑意回头轻声说话。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">视频提示词</span>
+                    <div class="info-value video-prompt"><div class="prompt-block"><textarea class="prompt-copy" readonly>Shot 05 | 父亲微笑邀约近景: 紧接同一夜色庭院骑行段落，机位切换至单车车把前方微仰近景，戴眼镜、穿格子衬衫的父亲双手握把向前微倾，脸庞转向后座方向微笑开口说话。父亲唇部自然微动并轻点头。Camera: 前方贴近车把微跟微抖动。Motion cue: 父亲微笑开口与微风拂动额前碎发，禁止画面下方出现任何字幕文字。</textarea></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="shot-board">
+              <div class="shot-head">
+                <div class="shot-title">
+                  <span class="shot-id">Shot 06</span>
+                  <span class="shot-duration">2.3s <span class="duration-note">建议时长</span></span>
+                </div>
+              </div>
+              <div class="shot-layout">
+                <div class="asset-grid">
+                  <div class="asset-card">
+                    <div class="asset-label">Line Art</div>
+                    <div class="asset-stack"><div class="asset-frame"><img src="assets/shot06-line.jpg" alt="Shot 06 Line Draft" loading="lazy" decoding="async" /></div><a class="asset-link" href="assets/shot06-line.jpg">assets/shot06-line.jpg</a></div>
+                  </div>
+
+                </div>
+                <div class="info-grid">
+                  <div class="info-card">
+                    <span class="info-label">画面</span>
+                    <div class="info-value">9:16 竖屏强前景特写：画面左侧三分之二为父亲格纹衬衫后背与左肩的大幅前景色块轮廓，右侧三分之一露出后座小女孩的侧正脸，她歪头仰视爸爸上方开心地张嘴笑着回话。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">镜头</span>
+                    <div class="info-value">与 Shot 05 形成同一骑行空间内的正反打仰拍特写，镜头架于车侧贴近父亲肩膀，允许改变朝向拍清后座女孩反应。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">动作</span>
+                    <div class="info-value">小女孩紧贴父亲后背侧身探出小脑袋，仰头开心笑着回应爸爸的秘密约定。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">视频提示词</span>
+                    <div class="info-value video-prompt"><div class="prompt-block"><textarea class="prompt-copy" readonly>Shot 06 | 女孩贴背仰笑回应: 延续同一骑行序列的正反打特写，画面左侧近三分之二为父亲格纹衬衫后背与肩部前景轮廓，右侧露出后座小女孩穿白色外套偏出小脸，仰头望向父亲开心大笑点头。小女孩随单车轻轻晃动并眨眼偷笑。Camera: 固定跟拍近距贴肩微晃视角。Motion cue: 女孩仰脸笑容展开与碎发轻拂，禁止底部生成文字字幕。</textarea></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="shot-board">
+              <div class="shot-head">
+                <div class="shot-title">
+                  <span class="shot-id">Shot 07</span>
+                  <span class="shot-duration">2.3s <span class="duration-note">建议时长</span></span>
+                </div>
+              </div>
+              <div class="shot-layout">
+                <div class="asset-grid">
+                  <div class="asset-card">
+                    <div class="asset-label">Line Art</div>
+                    <div class="asset-stack"><div class="asset-frame"><img src="assets/shot07-line.jpg" alt="Shot 07 Line Draft" loading="lazy" decoding="async" /></div><a class="asset-link" href="assets/shot07-line.jpg">assets/shot07-line.jpg</a></div>
+                  </div>
+
+                </div>
+                <div class="info-grid">
+                  <div class="info-card">
+                    <span class="info-label">画面</span>
+                    <div class="info-value">9:16 竖屏胸像近景：女生微向右侧身偏头抬头直视画外斜前方，左侧粉色一字发卡、浅粉衬衫领口与编织马甲轮廓细腻；背景上方隐约有公园大树树冠外轮廓线条。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">镜头</span>
+                    <div class="info-value">回到同一夜间公园广场（同一空间），相对 Shot 03 远景切为人物近距离正面微仰特写，允许改变景别贴近表现微表情。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">动作</span>
+                    <div class="info-value">女生缓缓抬眼望向前方，嘴唇微启随即抿住，眼底流露淡淡失落与眷恋。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">视频提示词</span>
+                    <div class="info-value video-prompt"><div class="prompt-block"><textarea class="prompt-copy" readonly>Shot 07 | 女主抬头远望特写: 切回同一夜间公园广场的女生胸上近景，女生束低马尾、左额别一字发卡、穿粉翻领衬衫配无袖针织马甲，头微偏向前方凝望，神情克制微惆怅，背景隐约可见夜色树枝外框。女生眼神轻眨并缓缓呼出一口气。Camera: 平视固定近景极轻缓推进。Motion cue: 眼睫微眨与唇角轻动，避免突然转头或改变服饰细节。</textarea></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="shot-board">
+              <div class="shot-head">
+                <div class="shot-title">
+                  <span class="shot-id">Shot 08</span>
+                  <span class="shot-duration">2.1s <span class="duration-note">建议时长</span></span>
+                </div>
+              </div>
+              <div class="shot-layout">
+                <div class="asset-grid">
+                  <div class="asset-card">
+                    <div class="asset-label">Line Art</div>
+                    <div class="asset-stack"><div class="asset-frame"><img src="assets/shot08-line.jpg" alt="Shot 08 Line Draft" loading="lazy" decoding="async" /></div><a class="asset-link" href="assets/shot08-line.jpg">assets/shot08-line.jpg</a></div>
+                  </div>
+
+                </div>
+                <div class="info-grid">
+                  <div class="info-card">
+                    <span class="info-label">画面</span>
+                    <div class="info-value">9:16 竖屏过肩远景：前景左下方占画面近一半的是女生的背影（低马尾后脑勺、粉色衬衫领与花色针织马甲肩背）；中远景右上方广场柏油路上，红格衬衫父亲骑黑色二八老式单车载着白外套小女孩正背对镜头沿着路沿朝右前方远去；背景上方为公园大树枝叶与路灯柱，路面可见长路沿透视线。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">镜头</span>
+                    <div class="info-value">同一夜间公园广场（同一空间），机位退回至女生左后肩后方做过肩远景（over-shoulder pullback/wide axis from Shot 07），完整交代女生视点所望向的父女背影。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">动作</span>
+                    <div class="info-value">女生伫立前景目送，远景中的父女共乘老式二八单车顺着路面渐行渐远。</div>
+                  </div>
+                  <div class="info-card">
+                    <span class="info-label">视频提示词</span>
+                    <div class="info-value video-prompt"><div class="prompt-block"><textarea class="prompt-copy" readonly>Shot 08 | 过肩目送父女远去尾声: 在同一夜间公园广场中切为过肩远景，前景左下为女生马尾与粉衬衫针织马甲肩背剪影静立画面，右前方柏油小路上是格子衬衫父亲骑着老式二八单车载白外套小女孩正背对镜头向前远去，路面路沿石透视延伸向远处树影与路灯杆。父女单车继续向前渐远，前景女生静立不动。Camera: 女生肩后固定广角长持微凝视。Motion cue: 中远景单车向前驶远变小与女生肩部微静立，禁止把骑行角色消失或新增多余车辆。</textarea></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>分镜总览</h2>
+
+      <div class="overview-section">
+        <div>
+        <div class="overview-subhead">
+            <div class="overview-subtitle">线稿总览</div>
+          </div>
+          <div style="height: 12px;"></div>
+          <div class="overview-grid">
+            <article class="overview-card">
+              <div class="overview-shot">
+                <span class="overview-id">Shot 01</span>
+                <span class="overview-duration">2.1s <span class="duration-note">建议时长</span></span>
+              </div>
+              <div class="overview-frame"><img src="assets/shot01-line.jpg" alt="Shot 01 Line Draft" loading="lazy" decoding="async" /></div>
+            </article>
+
+            <article class="overview-card">
+              <div class="overview-shot">
+                <span class="overview-id">Shot 02</span>
+                <span class="overview-duration">2.1s <span class="duration-note">建议时长</span></span>
+              </div>
+              <div class="overview-frame"><img src="assets/shot02-line.jpg" alt="Shot 02 Line Draft" loading="lazy" decoding="async" /></div>
+            </article>
+
+            <article class="overview-card">
+              <div class="overview-shot">
+                <span class="overview-id">Shot 03</span>
+                <span class="overview-duration">1.9s <span class="duration-note">建议时长</span></span>
+              </div>
+              <div class="overview-frame"><img src="assets/shot03-line.jpg" alt="Shot 03 Line Draft" loading="lazy" decoding="async" /></div>
+            </article>
+
+            <article class="overview-card">
+              <div class="overview-shot">
+                <span class="overview-id">Shot 04</span>
+                <span class="overview-duration">2.2s <span class="duration-note">建议时长</span></span>
+              </div>
+              <div class="overview-frame"><img src="assets/shot04-line.jpg" alt="Shot 04 Line Draft" loading="lazy" decoding="async" /></div>
+            </article>
+
+            <article class="overview-card">
+              <div class="overview-shot">
+                <span class="overview-id">Shot 05</span>
+                <span class="overview-duration">0.8s <span class="duration-note">建议时长</span></span>
+              </div>
+              <div class="overview-frame"><img src="assets/shot05-line.jpg" alt="Shot 05 Line Draft" loading="lazy" decoding="async" /></div>
+            </article>
+
+            <article class="overview-card">
+              <div class="overview-shot">
+                <span class="overview-id">Shot 06</span>
+                <span class="overview-duration">2.3s <span class="duration-note">建议时长</span></span>
+              </div>
+              <div class="overview-frame"><img src="assets/shot06-line.jpg" alt="Shot 06 Line Draft" loading="lazy" decoding="async" /></div>
+            </article>
+
+            <article class="overview-card">
+              <div class="overview-shot">
+                <span class="overview-id">Shot 07</span>
+                <span class="overview-duration">2.3s <span class="duration-note">建议时长</span></span>
+              </div>
+              <div class="overview-frame"><img src="assets/shot07-line.jpg" alt="Shot 07 Line Draft" loading="lazy" decoding="async" /></div>
+            </article>
+
+            <article class="overview-card">
+              <div class="overview-shot">
+                <span class="overview-id">Shot 08</span>
+                <span class="overview-duration">2.1s <span class="duration-note">建议时长</span></span>
+              </div>
+              <div class="overview-frame"><img src="assets/shot08-line.jpg" alt="Shot 08 Line Draft" loading="lazy" decoding="async" /></div>
+            </article>
+            </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+        <section class="panel">
+          <h2>合并提示词及分镜</h2>
+          <div class="aggregate-prompt-card has-sheet">
+
+      <div class="aggregate-sheet-area">
+        <div class="overview-label">Line Art Storyboard Sheet</div>
+        <a class="aggregate-sheet-frame" href="assets/storyboard-line-sheet.jpg" download>
+          <img src="assets/storyboard-line-sheet.jpg" alt="Line Art Storyboard Sheet" loading="lazy" decoding="async" />
+        </a>
+      </div>
+    <div class="aggregate-prompt-area"><div class="prompt-block"><textarea class="prompt-copy aggregate-prompt-copy" readonly>主体:年轻女生（黑长发束低马尾、左额一字发卡、浅粉翻领长袖衬衫叠穿杂色无袖针织马甲、深灰百褶长裙，怀抱玻璃瓶可乐与手机）与父女组合（戴细框眼镜的中年父亲骑黑色老式二八自行车，后座白色毛绒外套小女孩紧搂父亲腰背）
+场景:夜间公园广场（白色斜向路沿石台、方形树池大树与远处秋千架）及夜间洋房花丛庭院小路
+音乐:不要生成任何背景音乐和旋律，只需要生成场景及动作对应的音效
+
+Shot 01 | 女主抱可乐静坐开篇: 在夜间公园石阶前取正面中近景，黑长发束低马尾、左额佩戴小发卡、浅粉翻领衬衫叠穿粗针织马甲的年轻女生坐在台阶上，双手在身前握住一瓶玻璃瓶可乐与手机，低头沉默。女生微垂眼帘并轻收手指握紧可乐瓶身。Camera: 平视固定机位极轻缓向前推进。Motion cue: 女生肩颈轻呼吸起伏与指尖握紧可乐瓶。
+Shot 02 | 父女洋房前骑行记忆: 切入夜间洋房门廊白栏杆与灌木丛旁的斜侧中全景，戴细框眼镜的中年父亲穿深色外套配格纹围巾，蹬着老式二八黑色大杠自行车向右前行，后座幼年小女孩双手环抱父亲腰背。父亲稳稳蹬车带着后座女孩向右前穿出画面。Camera: 侧前方平稳横移跟随。Motion cue: 单车车轮转动向右滑行前进，父亲带笑意轻晃踩踏。
+Shot 03 | 广场孤坐中远景定格: 回到同一夜间公园广场取右前中高俯角中远景，长条白色路沿石台自左下斜向右上延伸，同一女生抱着玻璃瓶可乐独自坐在路沿边，后台可见大树、方形树池与远处秋千架，广场空荡无人。女生独自低头又缓慢朝右下方路面张望停顿。Camera: 俯角高位固定缓摇跟随女主视线。Motion cue: 女生小幅度转头环顾空地后肩部微沉。
+Shot 04 | 庭院花丛并骑侧面: 切至夜间花丛小院平房前正侧中景，戴眼镜父亲穿红白格纹衬衫配蓝色牛仔裤，前倾身子踩踏同一辆老式黑色二八自行车朝左行驶，穿白色毛绒短外套的小女孩贴坐后座紧搂父亲腰部。两轮平稳滚动带动车架向右转左顺畅横穿花丛前小路。Camera: 平视正侧向向左同步跟拍横移。Motion cue: 父亲踩踏脚蹬带动车轮旋转前进，小女孩随车轻晃抬头微笑。
+Shot 05 | 车把前方父亲微笑邀约: 紧接同一夜色庭院骑行，机位贴近单车车把前下方取微仰近景，穿格纹衬衫戴眼镜的父亲占画面右侧，双手伸向左下握把，面带温和笑意微微侧头望向后座小女孩开口说话。父亲唇部自然轻动并含笑轻点头。Camera: 前方近距离跟随车把轻微起伏推进。Motion cue: 父亲微侧下颌对着女儿柔和微笑张口说话，发丝微动。
+Shot 06 | 贴肩正反打女孩仰笑: 同一骑行段落切至紧贴父亲左后肩背的正反打微仰特写，画面左侧近三分之二为父亲格纹衬衫宽厚肩背，右侧露出后座穿白外套小女孩探出的脸庞，她正开心大笑仰望前方父亲并轻声答应。女孩扬起下巴眼睛弯成笑弧。Camera: 贴肩后侧跟拍微仰特写。Motion cue: 女孩仰脸笑容扩大并轻点头回应，微风带动额前碎发。
+Shot 07 | 女主抬头凝望克制落寞: 回到夜间公园广场的女生胸上近景特写，女生低马尾与左侧小发卡、粉翻领衬衫及针织马甲细节清晰，背后隐约有夜色大树枝叶轮廓，她缓缓抬起头望向前方。女生眼帘轻眨并深吸一口气保持克制眺望。Camera: 平视固定近景缓慢轻微推进。Motion cue: 女生下颌微抬目视前方，眨眼间神情渐归失落与眷恋。
+Shot 08 | 过肩目送父女远去尾声: 同广场切至女生左后肩出发的过肩远景，前景左下为女生低马尾与花色针织马甲背影静立守望，中远景右前方宽阔小路上，格纹衬衫父亲骑老式二八单车载着白外套小女孩沿着路沿笔直向前渐行渐远。父女单车顺着路面远去变小而女生在前景伫立不动。Camera: 女生肩后固定广角长持凝视。Motion cue: 前景女生静止目送，中远景单车与双人背影顺广场纵深方向持续远去。
+
+Global continuity: 严格锁定女主角的低马尾、左额一字发卡、浅粉翻领衬衫加无袖针织马甲及玻璃瓶可乐道具，锁定父亲细框眼镜、格子衬衫与老式黑色二八自行车结构、以及后座白外套小女孩体型特征；夜间广场石沿、树池与庭院花丛两处室外空间保持真实夜戏材质质感，全程避免画面出现文字字幕、额外路人或把老式自行车变成现代车辆。</textarea></div></div>
+          </div>
+        </section>
+
+
+    <section class="panel method-guide">
+      <h2>建议使用方法</h2>
+      <div class="method-guide-title">按脚本还原度选择生成方式</div>
+      <div class="method-guide-definition">
+        这里的“还原度”，不是还原参考图，而是这个镜头需要多严格地贴合脚本。三档没有质量高低，只代表控制强度不同。
+      </div>
+
+      <div class="method-list">
+        <div class="method-head" aria-hidden="true">
+          <div>编号</div>
+          <div>还原度</div>
+          <div>适用情况</div>
+          <div>建议输入</div>
+        </div>
+
+        <article class="method-row">
+          <div class="method-index">01</div>
+          <div class="method-name">还原度低：自由发挥</div>
+          <div class="method-description">适合氛围、情绪和环境建立镜头。只使用完整提示词，不附加角色、场景或分镜图片参考，允许模型自行补充构图、动作和画面细节。</div>
+          <div class="method-inputs" aria-label="建议输入">
+            <span class="method-input">纯提示词</span>
+          </div>
+        </article>
+
+        <article class="method-row">
+          <div class="method-index">02</div>
+          <div class="method-name">还原度中：允许小幅偏离</div>
+          <div class="method-description">适合主体、场景和大构图需要稳定，但动作过程可以适度发挥的镜头。使用分镜合集图稳定整体镜头关系，并用提示词写清当前镜头的起始状态、动作路径、运镜和落点。</div>
+          <div class="method-inputs" aria-label="建议输入">
+            <span class="method-input">分镜合集图</span>
+            <span class="method-input">提示词</span>
+          </div>
+        </article>
+
+        <article class="method-row">
+          <div class="method-index">03</div>
+          <div class="method-name">还原度高：基本不能偏</div>
+          <div class="method-description">适合关键动作、产品展示、空间连续性或重要转场。使用对应的单独分镜图与分镜提示词，明确起始状态、主体与镜头的完整路径、可见结果、连续性和禁止项；必要时拆短镜头分段生成。</div>
+          <div class="method-inputs" aria-label="建议输入">
+            <span class="method-input">单独分镜图</span>
+            <span class="method-input">分镜提示词</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="method-footer">
+        <div><strong>先判断这个镜头最不能错的是什么，</strong>再增加对应约束。还原度越高，单个镜头越要减负。</div>
+        <div class="method-footer-rule">没有默认最优解</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
